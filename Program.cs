@@ -1,18 +1,22 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
-namespace LabWork
+class Program
 {
-    // Даний проект є шаблоном для виконання лабораторних робіт
-    // з курсу "Об'єктно-орієнтоване програмування та патерни проектування"
-    // Необхідно змінювати і дописувати код лише в цьому проекті
-    // Відео-інструкції щодо роботи з github можна переглянути 
-    // за посиланням https://www.youtube.com/@ViktorZhukovskyy/videos 
-    class Program
+    static void Main()
     {
-        static void Main(string[] args)
+        string text = "Тут є декілька номерів телефонів: 1234567, 7654321, але також є інші номери 9876543 і 12345, які не є 7-значними.";
+
+        // Регулярний вираз для пошуку 7-значних номерів телефонів
+        string pattern = @"\b\d{7}\b";
+
+        // Використовуємо Regex для пошуку всіх 7-значних номерів у тексті
+        MatchCollection matches = Regex.Matches(text, pattern);
+
+        // Виводимо знайдені номери
+        foreach (Match match in matches)
         {
-            
-            Console.WriteLine("Hello World!");
+            Console.WriteLine(match.Value);
         }
     }
 }
